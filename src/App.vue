@@ -1,30 +1,49 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <div class="container">
+    <!-- <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav> -->
+    <router-view />
+  </div>
 </template>
 
+<script setup>
+// import { reactive, ref } from "vue";
+// import { useRouter, useRoute } from "vue-router";
+// import { useStore } from "vuex";
+
+// const route = useRoute();
+// const router = useRouter();
+// const store = useStore();
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
 }
-
-nav {
-  padding: 30px;
+.clears {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+ul,
+li,
+ol {
+  list-style: none;
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+a {
+  text-decoration: none;
+}
+img {
+  border: none;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f0f0;
 }
 </style>
