@@ -1,19 +1,22 @@
 <template>
   <div class="container">
-    <!-- <nav>
+    <nav v-if="route.path==='/'||route.path==='/about'">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav> -->
+      <router-link to="/about">About</router-link> |
+      <router-link to="/VR_Showings">VR_Showings</router-link> |
+      <router-link to="/small-island">SmallIsland</router-link>
+    </nav>
     <router-view />
   </div>
 </template>
 
 <script setup>
 // import { reactive, ref } from "vue";
-// import { useRouter, useRoute } from "vue-router";
+// import { useRoute,useRouter } from "vue-router";
 // import { useStore } from "vuex";
-
-// const route = useRoute();
+import { useRoute } from "vue-router";
+const route = useRoute();
+console.log(route);
 // const router = useRouter();
 // const store = useStore();
 </script>
