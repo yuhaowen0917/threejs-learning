@@ -10,7 +10,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Water } from "three/examples/jsm/objects/Water2";
 // 导入gltf载入库
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 
 const container = ref("");
 
@@ -96,6 +97,19 @@ window.addEventListener("click", () => {
     skyMaterial.map.needsUpdate = true;
   }
 });
+
+// 载入环境纹理hdr
+const hdrLoader = new RGBELoader();
+hdrLoader.loadAsync("./assets/050.hdr").then((texture) => {
+  texture.mapping = THREE.EquirectangularReflectionMapping;
+  scene.background = texture;
+  scene.environment = texture;
+});
+
+// 添加平行光
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(-100, 100, 10);
+scene.add(light);
 
 // 创建水面
 const waterGeometry = new THREE.CircleGeometry(300, 64);
