@@ -22,6 +22,11 @@ const routes = [
     name: "SmallIsland",
     component: () => import("@/views/SmallIsland.vue"),
   },
+  {
+    path: "/crystal-bear",
+    name: "CrystalBear",
+    component: () => import("@/views/CrystalBear.vue"),
+  },
 ];
 
 const router = createRouter({

@@ -5,6 +5,7 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/VR_Showings">VR_Showings</router-link> |
       <router-link to="/small-island">SmallIsland</router-link>
+      <router-link to="/crystal-bear">CrystalBear</router-link>
     </nav>
     <router-view />
   </div>
