@@ -27,6 +27,11 @@ const routes = [
     name: "CrystalBear",
     component: () => import("@/views/CrystalBear.vue"),
   },
+  {
+    path: "/buy-car",
+    name: "BuyCar",
+    component: () => import("@/views/BuyCar.vue"),
+  }
 ];
 
 const router = createRouter({
