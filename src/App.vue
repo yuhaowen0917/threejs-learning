@@ -1,12 +1,24 @@
 <template>
   <div class="container">
-    <nav v-if="route.path==='/'||route.path==='/about'">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/VR_Showings">VR_Showings</router-link> |
-      <router-link to="/small-island">SmallIsland</router-link> |
-      <router-link to="/crystal-bear">CrystalBear</router-link> |
-      <router-link to="/buy-car">BuyCar</router-link>
+    <nav v-if="route.path === '/' || route.path === '/about'">
+      <div>
+        <router-link to="/">Home</router-link>
+      </div>
+      <div>
+        <router-link to="/about">About</router-link>
+      </div>
+      <div>
+        <router-link to="/VR_Showings">VR看房：VR_Showings</router-link>
+      </div>
+      <div>
+        <router-link to="/small-island">小岛：SmallIsland</router-link>
+      </div>
+      <div>
+        <router-link to="/crystal-bear">水晶小熊：CrystalBear</router-link>
+      </div>
+      <div>
+        <router-link to="/buy-car">选购汽车：BuyCar</router-link>
+      </div>
     </nav>
     <router-view />
   </div>
