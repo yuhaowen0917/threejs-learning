@@ -19,6 +19,9 @@
       <div>
         <router-link to="/buy-car">选购汽车：BuyCar</router-link>
       </div>
+      <div>
+        <router-link to="/christmas-card">圣诞贺卡：ChristmasCard</router-link>
+      </div>
     </nav>
     <router-view />
   </div>
