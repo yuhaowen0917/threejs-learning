@@ -36,6 +36,11 @@ const routes = [
     path: "/christmas-card",
     name: "ChristmasCard",
     component: () => import("@/views/ChristmasCard.vue"),
+  },
+  {
+    path: "/spherical-robot",
+    name: "SphericalRobot",
+    component: () => import("@/views/SphericalRobot.vue"),
   }
 ];
 

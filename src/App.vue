@@ -22,6 +22,9 @@
       <div>
         <router-link to="/christmas-card">圣诞贺卡：ChristmasCard</router-link>
       </div>
+      <div>
+        <router-link to="/spherical-robot">球形机器人：SphericalRobot</router-link>
+      </div>
     </nav>
     <router-view />
   </div>

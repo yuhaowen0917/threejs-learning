@@ -84,7 +84,6 @@ let controls;
 onMounted(() => {
   // 创建轨道控制器
   controls = new OrbitControls(camera, ChristmasCard.value);
-  // 设置控制器阻尼，是控制器效果更真实，必须在动画循环里调用.update()
   controls.target.set(-8, 2, 0);
   controls.enableDamping = true;
   ChristmasCard.value.appendChild(renderer.domElement);
@@ -231,27 +230,27 @@ let scenes = ref([
   {
     text: "感谢在这么大的世界里遇见了你",
     callback: () => {
-      translateCamera(new THREE.Vector3(7, 0, 23), new THREE.Vector3(0, 0, 0));
+      translateCamera(new THREE.Vector3(5, 1, 23), new THREE.Vector3(0, 0, 0));
     },
   },
   {
     text: "愿与你探寻世界的每一个角落",
     callback: () => {
-      translateCamera(new THREE.Vector3(10, 3, 0), new THREE.Vector3(5, 2, 0));
+      translateCamera(new THREE.Vector3(10, 3, 0), new THREE.Vector3(0, 0, 0));
     },
   },
   {
     text: "愿将天上的星星送给你",
     callback: () => {
       translateCamera(new THREE.Vector3(7, 0, 23), new THREE.Vector3(0, 0, 0));
-      // makeHeart();
+      makeHeart();
     },
   },
   {
     text: "愿疫情结束，大家健康快乐！",
     callback: () => {
       translateCamera(
-        new THREE.Vector3(-20, 1.3, 6.6),
+        new THREE.Vector3(-6, 1.5, 7),
         new THREE.Vector3(5, 2, 0)
       );
     },
@@ -270,7 +269,7 @@ window.addEventListener(
       index.value++;
       if (index.value > scenes.value.length - 1) {
         index.value = 0;
-        // restoreHeart();
+        restoreHeart();
       }
     }
     scenes.value[index.value].callback();
@@ -280,11 +279,101 @@ window.addEventListener(
   },
   false
 );
+
+// 实例化创建漫天星星
+let starsInstance = new THREE.InstancedMesh(
+  new THREE.SphereGeometry(0.1, 32, 32),
+  new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    emissive: 0xffffff,
+    emissiveIntensity: 10,
+  }),
+  100
+);
+
+// 星星随机到天上
+let starsArr = [];
+let endArr = [];
+
+for (let i = 0; i < 100; i++) {
+  let x = Math.random() * 100 - 50;
+  let y = Math.random() * 100 - 50;
+  let z = Math.random() * 100 - 50;
+  starsArr.push(new THREE.Vector3(x, y, z));
+  let matrix = new THREE.Matrix4();
+  matrix.setPosition(x, y, z);
+  starsInstance.setMatrixAt(i, matrix);
+}
+scene.add(starsInstance);
+
+// 创建爱心路径
+let heartShape = new THREE.Shape();
+heartShape.moveTo(25, 25);
+heartShape.bezierCurveTo(25, 25, 20, 0, 0, 0);
+heartShape.bezierCurveTo(-30, 0, -30, 35, -30, 35);
+heartShape.bezierCurveTo(-30, 55, -10, 77, 25, 95);
+heartShape.bezierCurveTo(60, 77, 80, 55, 80, 35);
+heartShape.bezierCurveTo(80, 35, 80, 0, 50, 0);
+heartShape.bezierCurveTo(35, 0, 25, 25, 25, 25);
+
+// 根据爱心路径获取点
+let center = new THREE.Vector3(0, 2, 10);
+for (let i = 0; i < 100; i++) {
+  let point = heartShape.getPoint(i / 100);
+  endArr.push(
+    new THREE.Vector3(
+      point.x * 0.1 + center.x,
+      point.y * 0.1 + center.y,
+      center.z
+    )
+  );
+}
+// 创建爱心动画
+function makeHeart() {
+  let params = {
+    time: 0,
+  };
+
+  gsap.to(params, {
+    time: 1,
+    duration: 1,
+    onUpdate: () => {
+      for (let i = 0; i < 100; i++) {
+        let x = starsArr[i].x + (endArr[i].x - starsArr[i].x) * params.time;
+        let y = starsArr[i].y + (endArr[i].y - starsArr[i].y) * params.time;
+        let z = starsArr[i].z + (endArr[i].z - starsArr[i].z) * params.time;
+        let matrix = new THREE.Matrix4();
+        matrix.setPosition(x, y, z);
+        starsInstance.setMatrixAt(i, matrix);
+      }
+      starsInstance.instanceMatrix.needsUpdate = true;
+    },
+  });
+}
+function restoreHeart() {
+  let params = {
+    time: 0,
+  };
+
+  gsap.to(params, {
+    time: 1,
+    duration: 1,
+    onUpdate: () => {
+      for (let i = 0; i < 100; i++) {
+        let x = endArr[i].x + (starsArr[i].x - endArr[i].x) * params.time;
+        let y = endArr[i].y + (starsArr[i].y - endArr[i].y) * params.time;
+        let z = endArr[i].z + (starsArr[i].z - endArr[i].z) * params.time;
+        let matrix = new THREE.Matrix4();
+        matrix.setPosition(x, y, z);
+        starsInstance.setMatrixAt(i, matrix);
+      }
+      starsInstance.instanceMatrix.needsUpdate = true;
+    },
+  });
+}
 </script>
 
 <style lang="less">
-.christmas-card {
-}
 .scenes {
   position: fixed;
   left: 0;
