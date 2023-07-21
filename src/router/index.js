@@ -41,6 +41,11 @@ const routes = [
     path: "/spherical-robot",
     name: "SphericalRobot",
     component: () => import("@/views/SphericalRobot.vue"),
+  },
+  {
+    path: "/models-page",
+    name: "ModelsPage",
+    component: () => import("@/views/ModelsPage.vue"),
   }
 ];
 

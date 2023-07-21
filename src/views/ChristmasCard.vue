@@ -95,12 +95,12 @@ const dracoLoader = new DRACOLoader();
 // 添加draco载入库
 dracoLoader.setDecoderPath("./draco/");
 // 实例化gltf载入库
-const loader = new GLTFLoader();
+const gltfLoader = new GLTFLoader();
 // 添加draco载入库
-loader.setDRACOLoader(dracoLoader);
+gltfLoader.setDRACOLoader(dracoLoader);
 
 // 加载模型
-loader.load("./model/scene.glb", (gltf) => {
+gltfLoader.load("./model/scene.glb", (gltf) => {
   const model = gltf.scene;
   model.traverse((child) => {
     if (child.name === "Plane") {
