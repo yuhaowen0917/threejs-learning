@@ -46,6 +46,11 @@ const routes = [
     path: "/models-page",
     name: "ModelsPage",
     component: () => import("@/views/ModelsPage.vue"),
+  },
+  {
+    path: "/earth-model",
+    name: "EarthModel",
+    component: () => import("@/views/EarthModel.vue"),
   }
 ];
 
