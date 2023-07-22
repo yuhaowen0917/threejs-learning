@@ -5,13 +5,13 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import * as THREE from "three";
+// eslint-disable-next-line no-unused-vars
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // 导入gltf载入库
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 // import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 
-// eslint-disable-next-line no-unused-vars
 import gsap from "gsap";
 
 const modelsPage = ref("");
@@ -34,11 +34,11 @@ camera.updateProjectionMatrix();
 scene.add(camera);
 
 // 加入辅助轴，帮助我们查看3维坐标轴
-const axesHelper = new THREE.AxesHelper(1);
-scene.add(axesHelper);
+// const axesHelper = new THREE.AxesHelper(1);
+// scene.add(axesHelper);
 
 // 初始化渲染器
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+let renderer = new THREE.WebGLRenderer({ antialias: true });
 // 设置渲染器的尺寸大小
 renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -59,8 +59,8 @@ const render = () => {
 // 挂载完毕之后获取dom
 onMounted(() => {
   // 创建轨道控制器
-  const controls = new OrbitControls(camera, modelsPage.value);
-  controls.enableDamping = true;
+  // const controls = new OrbitControls(camera, modelsPage.value);
+  // controls.enableDamping = true;
 
   modelsPage.value.appendChild(renderer.domElement);
   render();
@@ -115,7 +115,7 @@ gltfLoader.load("./model/xz.glb", (gltf) => {
 });
 
 gltfLoader.load("./model/xq6.glb", (gltf) => {
-  gltf.scene.scale.set(0.1, 0.1, 0.1);
+  gltf.scene.scale.set(0.06, 0.06, 0.06);
   gltf.scene.position.set(3, -8, 0);
   scene.add(gltf.scene);
   window.addEventListener("mousemove", (e) => {
@@ -134,7 +134,7 @@ gltfLoader.load("./model/xq6.glb", (gltf) => {
 });
 
 gltfLoader.load("./model/gr75.glb", (gltf) => {
-  // gltf.scene.scale.set(0.1, 0.1, 0.1);
+  gltf.scene.scale.set(0.7, 0.7, 0.7);
   gltf.scene.position.set(3, -16, 0);
   scene.add(gltf.scene);
   window.addEventListener("mousemove", (e) => {
@@ -158,14 +158,13 @@ let timeline2 = gsap.timeline();
 window.addEventListener("mousewheel", (e) => {
   if (e.wheelDelta < 0) {
     page++;
-    console.log(e.wheelDelta, page);
+    // console.log(e.wheelDelta, page);
     if (page > 2) {
       page = 2;
     }
   }
   if (e.wheelDelta > 0) {
     page--;
-    console.log(e.wheelDelta, page);
     if (page < 0) {
       page = 0;
     }
