@@ -64,6 +64,10 @@ const nav = ref([
     name: "3D酷炫字体：CoolFont",
     url: "/cool-font",
   },
+  {
+    name: "3D文字特效：TextEffects",
+    url: "/text-effects",
+  },
 ]);
 </script>
 

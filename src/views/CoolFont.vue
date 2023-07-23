@@ -115,14 +115,4 @@ fontLoader.load("fonts/FangSong_Regular.json", (font) => {
 </script>
 
 <style lang="less">
-.cool-font {
-  //   canvas {
-  //     display: block;
-  //     position: absolute;
-  //     left: 0;
-  //     top: 0;
-  //     width: 100%;
-  //     height: 100%;
-  //   }
-}
 </style>

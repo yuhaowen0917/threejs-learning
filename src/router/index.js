@@ -56,6 +56,11 @@ const routes = [
     path: "/cool-font",
     name: "CoolFont",
     component: () => import("@/views/CoolFont.vue"),
+  },
+  {
+    path: "/text-effects",
+    name: "TextEffects",
+    component: () => import("@/views/TextEffects.vue"),
   }
 ];
 
