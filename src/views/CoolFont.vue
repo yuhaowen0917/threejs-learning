@@ -92,20 +92,20 @@ fontLoader.load("fonts/FangSong_Regular.json", (font) => {
     curveSegments: 15, // 曲线分段数
     bevelEnabled: true, // 是否启用斜角
     bevelThickness: 10, // 斜角厚度
-    bevelSize: 5, // 斜角大小
+    bevelSize: 6, // 斜角大小
     bevelSegments: 5, // 斜角分段数
   });
   geometry.center();
   // 设置字体材质
   const material = new THREE.MeshPhysicalMaterial({
-    color: 0xeeeeff,
+    color: 0x00aef0,
     roughness: 0,
     reflectivity: 1,
     thickness: 80,
-    ior: 1.5,
+    ior: 2,
     transmission: 1,
     side: THREE.DoubleSide,
-    emissive: 0xffeeff,
+    emissive: 0xffffff,
     emissiveIntensity: 0.1,
   });
   // 创建字体
