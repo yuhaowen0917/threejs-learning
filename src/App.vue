@@ -60,6 +60,10 @@ const nav = ref([
     name: "3D地球模型：EarthModel",
     url: "/earth-model",
   },
+  {
+    name: "3D酷炫字体：CoolFont",
+    url: "/cool-font",
+  },
 ]);
 </script>
 
@@ -98,7 +102,7 @@ nav {
     font-size: 18px;
     a {
       color: #060606;
-      &:hover{
+      &:hover {
         color: rgb(21, 114, 252);
       }
     }

@@ -51,6 +51,11 @@ const routes = [
     path: "/earth-model",
     name: "EarthModel",
     component: () => import("@/views/EarthModel.vue"),
+  },
+  {
+    path: "/cool-font",
+    name: "CoolFont",
+    component: () => import("@/views/CoolFont.vue"),
   }
 ];
 

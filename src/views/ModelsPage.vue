@@ -5,8 +5,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import * as THREE from "three";
-// eslint-disable-next-line no-unused-vars
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // 导入gltf载入库
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
